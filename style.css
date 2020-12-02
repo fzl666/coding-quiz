@@ -1,0 +1,73 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin:0px
+}
+
+#question {
+  font-size: 30px;
+  
+}
+.option{
+  position: absolute;
+  margin-left: 0%;
+}
+.buttons {
+  background-color:darkblue;
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 5px;
+  margin-bottom: 0.6%;
+}
+
+#qContainer {
+  position:absolute;
+  margin-left:30%;
+  margin-right: 30%;
+  visibility: hidden
+  
+}
+#dContainer {
+  position:absolute;
+  margin-left:30%;
+  margin-right: 30%;
+  visibility: hidden
+  
+}
+#hContainer {
+
+  margin-left:30%;
+  margin-right: 30%;
+  visibility: hidden
+ 
+}
+#starter {
+  position:absolute;
+  margin-left:30%;
+  margin-right: 30%;
+  visibility: hidden
+}
+#check {
+  color: rgb(80, 80, 80);
+}
+
+.Pbuttons {
+  display: inline-block;
+  margin-right: 5px;
+  background-color:white;
+  border-color: darkblue;
+  color: darkblue;
+  font-size: 20px;
+  padding: 5px;
+  margin: 0.6%;
+}
+#user-list {
+  font-size: 20px;
+  background-color: darkblue;
+  color: white;
+}

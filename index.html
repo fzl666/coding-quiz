@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Coding Quiz Challenge</title>
+  </head>
+  <body>
+  <div id="starter">
+    <h1>Coding Quiz Challenge</h1>
+    <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score by ten seconds!</p>
+     <input type="button" id="start" class="Pbuttons" value="Start Quiz" onclick="quiz1()"></input>
+  </div>
+
+
+  <div id="hContainer">
+      <h3>High Scores</h3>
+      <input type="button" id="again" class="Pbuttons" value="Start Over" onclick="starting()"></input><input type="button" id="clear" class="Pbuttons" value="Clear Highscores" onclick="clearScores()"></input>
+      <ul id="user-list"></ul>
+
+  </div>
+
+  <div id="dContainer">
+    <h3 id>All done!</h3>
+    <p id="uscore"></p>
+    <form id="user-form">
+      <label>Enter Your Name</label>
+      <input type="text" name="user-text" id="user-text">
+    </form>
+    <button id="sub-btn" class="Pbuttons" onclick="storeScore()">submit</button>  
+  </div>
+
+
+  <div id = "qContainer">
+  <p id="time"></p>
+  <h3 id="question"></h3>
+  <div class="options">   
+  <input type="button" id="a1" class="buttons"></input>
+  <br>
+  <input type="button" id="a2" class="buttons"></input>
+  <br>
+  <input type="button" id="a3" class="buttons"></input>
+  <br>
+  <input type="button" id="a4" class="buttons"></input>
+  <br>
+  </div>
+  <hr>
+  <h4 id="check"></h4>
+  </div>
+
+    
+  </body>
+  <script src="./script.js"></script>
+</html>
