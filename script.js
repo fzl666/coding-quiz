@@ -194,14 +194,14 @@ function quiz2(){
 
  }
  function init(){
-   var storedScore = jason.parse(localStorage.getItem("list"))
+   var storedScore = JSON.parse(localStorage.getItem("track"))
    if (storeScore !==null){
-     list=storedScore
+     track=storedScore
    }
    renderScore()
  }
  function storeScore(){
-   localStorage.setItem("list",JSON.stringify(track))
+   localStorage.setItem("track", JSON.stringify(track))
  }
 
  function setTime() {
