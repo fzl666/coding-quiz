@@ -20,6 +20,8 @@ function starting(){
     score=0
 }
 function quiz1(){
+    timer.textContent = 75
+    secondsLeft = 74
     setTime()
    document.getElementById("qContainer").style.visibility='visible'
    document.getElementById("qContainer").removeAttribute("hidden")
@@ -106,7 +108,6 @@ function quiz2(){
        quiz4() 
        secondsLeft-=10    
         }
-   
  }
  function quiz4(){
     ask.innerHTML = "String values must be enclosed within _____ when being assigned to variables.";
@@ -135,7 +136,6 @@ function quiz2(){
        quiz5() 
        secondsLeft-=10   
         }
-   
  }
  function quiz5(){
     ask.innerHTML = "A very useful tool used during development and debugging for printing content to the debugger is:";
@@ -175,19 +175,40 @@ function quiz2(){
        document.getElementById("hContainer").style.visibility="visible" 
     
  }
- function storeScore(event){
-    var rec = names.value
-    var li = document.createElement("li");
-    li.innerHTML=rec+" - "+score
-    list.append(li);
-    viewHighScores()
+ function submitScore(){
+  var rec = names.value.trim()
+  track.push(rec+" - "+score)
+  names.value==""
+  storeScore()
+  renderScore()
+  viewHighScores()
  }
- 
+ function renderScore(){
+  var li = document.createElement("li");
+  for(var i = 0; i<track.length; i++){
+  var tracked = track[i];
+  li.setAttribute("data-index", i)
+  li.innerHTML=tracked
+  list.append(li);}
+
+
+ }
+ function init(){
+   var storedScore = jason.parse(localStorage.getItem("list"))
+   if (storeScore !==null){
+     list=storedScore
+   }
+   renderScore()
+ }
+ function storeScore(){
+   localStorage.setItem("list",JSON.stringify(track))
+ }
+
  function setTime() {
     var timerInterval = setInterval(function() {
       secondsLeft--;
       timer.textContent = secondsLeft;
-      if(secondsLeft === 0) {
+      if(secondsLeft === 0 && document.getElementById("qContainer").style.visibility =='visible') {
         clearInterval(timerInterval);
         allDone();
       }
@@ -198,3 +219,4 @@ function quiz2(){
 function clearScores(){
    list.innerHTML = ""  
 }
+ 
