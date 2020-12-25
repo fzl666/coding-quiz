@@ -11,9 +11,10 @@ var subBtn = document.getElementById("sub-btn")
 var list = document.getElementById("user-list")
 var track =[]
 var secondsLeft = 74
-
+//Need help local storage not working!
 //quiz time
 starting()
+init()
 function starting(){
     document.getElementById("hContainer").style.visibility='hidden'
     document.getElementById("starter").style.visibility='visible'
@@ -34,7 +35,6 @@ function quiz1(){
    a3.onclick = function(){
     score+=20
     checkAnswer.innerHTML="correct"
-    console.log(score)
     quiz2() 
    }
    a1.onclick= function(){
@@ -62,7 +62,6 @@ function quiz2(){
     a3.onclick = function(){
         score+=20
         checkAnswer.innerHTML="correct"
-        console.log(score)
         quiz3() 
        }
        a1.onclick= function(){
@@ -90,7 +89,6 @@ function quiz2(){
     a4.onclick = function(){
         score+=20
         checkAnswer.innerHTML="correct"
-        console.log(score)
         quiz4() 
        }
        a1.onclick= function(){
@@ -118,7 +116,6 @@ function quiz2(){
     a3.onclick = function(){
         score+=20
         checkAnswer.innerHTML="correct"
-        console.log(score)
         quiz5() 
        }
        a1.onclick= function(){
@@ -146,7 +143,6 @@ function quiz2(){
     a4.onclick = function(){
         score+=20
         checkAnswer.innerHTML="correct"
-        console.log(score)
         allDone()
        }
        a1.onclick= function(){
@@ -175,34 +171,39 @@ function quiz2(){
        document.getElementById("hContainer").style.visibility="visible" 
     
  }
- function submitScore(){
+ 
+  subBtn.addEventListener("click",function(event){
+  event.preventDefault()
   var rec = names.value.trim()
   track.push(rec+" - "+score)
   names.value==""
   storeScore()
   renderScore()
   viewHighScores()
- }
+}
+  )
+
  function renderScore(){
-  var li = document.createElement("li");
-  for(var i = 0; i<track.length; i++){
-  var tracked = track[i];
-  li.setAttribute("data-index", i)
-  li.innerHTML=tracked
-  list.append(li);}
-
-
+  list.innerHTML=""
+  for (var i = 0; i<track.length; i++){;
+  console.log(track)
+  var li = document.createElement("li")
+  list.appendChild(li);
+  li.innerHTML=track[i]}
  }
+
  function init(){
    var storedScore = JSON.parse(localStorage.getItem("track"))
-   if (storeScore !==null){
+   if (storedScore !==null){
      track=storedScore
    }
    renderScore()
  }
+
  function storeScore(){
    localStorage.setItem("track", JSON.stringify(track))
  }
+
 
  function setTime() {
     var timerInterval = setInterval(function() {
@@ -211,12 +212,16 @@ function quiz2(){
       if(secondsLeft === 0 && document.getElementById("qContainer").style.visibility =='visible') {
         clearInterval(timerInterval);
         allDone();
+      }else if(document.getElementById("hContainer").style.visibility =='hidden'){
+        clearInterval(timerInterval)
       }
   
     }, 1000);
   }
 
 function clearScores(){
+   track =[]
    list.innerHTML = ""  
+   storeScore()
 }
  
